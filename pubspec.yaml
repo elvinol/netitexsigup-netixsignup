@@ -1,0 +1,41 @@
+name: netitexsignup
+description: A new Flutter project for B2B sales management.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  pdf: ^3.10.7
+  printing: ^5.13.1
+  http: ^0.13.6
+
+  flutter:
+    sdk: flutter
+  
+  # State Management (REQUIRED for your ProviderScope error)
+  flutter_riverpod: ^2.5.1
+
+  # Database & Auth
+  supabase_flutter: ^2.0.2
+  image_picker: ^1.0.0
+
+  # File & Data Management (Onsight-style Export)
+  excel: ^4.0.0
+  file_picker: ^8.0.0
+  path_provider: ^2.1.2
+
+  # UI Icons & Styling
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png

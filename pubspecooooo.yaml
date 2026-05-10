@@ -1,0 +1,8 @@
+Launching lib\main.dart on Windows in debug mode...
+CUSTOMBUILD : error : Couldn't resolve the package 'flutter_riverpod' in 'package:flutter_riverpod/flutter_riverpod.dart'. [C:\netitexsignup\netitexsignup\build\windows\x64\flutter\flutter_assemble.vcxproj]
+lib/main.dart(2,8): error G832450DD: Not found: 'package:flutter_riverpod/flutter_riverpod.dart' [C:\netitexsignup\netitexsignup\build\windows\x64\flutter\flutter_assemble.vcxproj]
+lib/main.dart(16,16): error GF7CA4DBF: Couldn't find constructor 'ProviderScope'. [C:\netitexsignup\netitexsignup\build\windows\x64\flutter\flutter_assemble.vcxproj]
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\MSBuild\Microsoft\VC\v180\Microsoft.CppCommon.targets(254,5): error MSB8066: Custom build for 'C:\netitexsignup\netitexsignup\build\windows\x64\CMakeFiles\d70183724c7819727e6a52ddfe86b5e6\flutter_windows.dll.rule;C:\netitexsignup\netitexsignup\build\windows\x64\CMakeFiles\457c61fd4113133962892f3da1294cc0\flutter_assemble.rule' exited with code 1. [C:\netitexsignup\netitexsignup\build\windows\x64\flutter\flutter_assemble.vcxproj]
+Building Windows application...                                    36.5s
+Error: Build process failed.
+PS C:\netitexsignup\netitexsignup>

@@ -1,0 +1,453 @@
+{
+  "info": {
+    "name": "Netitex Full CRUD + RLS Test Suite",
+    "_postman_id": "netitex-crud-suite-002",
+    "description": "Complete CRUD + RLS test suite for Netitex multi-tenant SaaS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Catalogs",
+      "item": [
+        {
+          "name": "List Catalogs",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/catalogs?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Get Catalog by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/catalogs?id=eq.{{CATALOG_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Create Catalog",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/catalogs",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"vendor_name\": \"Vendor X\",\n  \"catalog_name\": \"New Catalog\",\n  \"description\": \"Test catalog\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Catalog",
+          "request": {
+            "method": "PATCH",
+            "url": "{{SUPABASE_URL}}/rest/v1/catalogs?id=eq.{{CATALOG_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated catalog description\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Catalog",
+          "request": {
+            "method": "DELETE",
+            "url": "{{SUPABASE_URL}}/rest/v1/catalogs?id=eq.{{CATALOG_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/products?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/products?id=eq.{{PRODUCT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/products",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"catalog_id\": \"{{CATALOG_ID}}\",\n  \"vendor_code\": \"V100\",\n  \"name\": \"Test Product\",\n  \"description\": \"Test Desc\",\n  \"price\": 9.99,\n  \"sku\": \"TEST-001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PATCH",
+            "url": "{{SUPABASE_URL}}/rest/v1/products?id=eq.{{PRODUCT_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 12.50\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{SUPABASE_URL}}/rest/v1/products?id=eq.{{PRODUCT_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List Customers",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers?id=eq.{{CUSTOMER_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"name\": \"Test Customer\",\n  \"email\": \"customer@test.com\",\n  \"phone\": \"+1 555 0000\",\n  \"address\": \"123 Test Street\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PATCH",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers?id=eq.{{CUSTOMER_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"+1 555 9999\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers?id=eq.{{CUSTOMER_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List Orders",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders?id=eq.{{ORDER_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"customer_id\": \"{{CUSTOMER_ID}}\",\n  \"status\": \"completed\",\n  \"total\": 0\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PATCH",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders?id=eq.{{ORDER_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"shipped\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders?id=eq.{{ORDER_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Items",
+      "item": [
+        {
+          "name": "List Order Items",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Get Order Item by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items?id=eq.{{ORDER_ITEM_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Create Order Item",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"order_id\": \"{{ORDER_ID}}\",\n  \"product_id\": \"{{PRODUCT_ID}}\",\n  \"quantity\": 2,\n  \"price\": 9.99\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Order Item",
+          "request": {
+            "method": "PATCH",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items?id=eq.{{ORDER_ITEM_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Order Item",
+          "request": {
+            "method": "DELETE",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items?id=eq.{{ORDER_ITEM_ID}}",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Profiles (Read Only)",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/profiles?id=eq.{{USER_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "List Profiles (Admin Only)",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/profiles?tenant_id=eq.{{TENANT_ID}}&select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "RLS Tests",
+      "item": [
+        {
+          "name": "Intruder Cannot Read Products",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/products?select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{INTRUDER_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Intruder Cannot Insert Product",
+          "request": {
+            "method": "POST",
+            "url": "{{SUPABASE_URL}}/rest/v1/products",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{INTRUDER_TOKEN}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"{{TENANT_ID}}\",\n  \"catalog_id\": \"{{CATALOG_ID}}\",\n  \"vendor_code\": \"BAD\",\n  \"name\": \"Intruder Product\",\n  \"price\": 1.00,\n  \"sku\": \"BAD-001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Intruder Cannot Read Orders",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/orders?select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{INTRUDER_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Intruder Cannot Read Customers",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/customers?select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{INTRUDER_TOKEN}}" }
+            ]
+          }
+        },
+        {
+          "name": "Intruder Cannot Read Order Items",
+          "request": {
+            "method": "GET",
+            "url": "{{SUPABASE_URL}}/rest/v1/order_items?select=*",
+            "header": [
+              { "key": "apikey", "value": "{{SUPABASE_ANON_KEY}}" },
+              { "key": "Authorization", "value": "Bearer {{INTRUDER_TOKEN}}" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+
